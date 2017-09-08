@@ -1,0 +1,1317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AGISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AGENCY">
+          <Key>
+            <PropertyRef Name="AGENCYID" />
+          </Key>
+          <Property Name="AGENCYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AGENCYNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="STATUS" Type="int" />
+          <Property Name="CREATEDTIME" Type="datetime" />
+          <Property Name="CREATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATEDTIME" Type="datetime" />
+          <Property Name="UPDATEDBY" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AGENCYSETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AGENCY" Type="nvarchar" MaxLength="50" />
+          <Property Name="FEATURECOUNTLIMIT" Type="int" />
+        </EntityType>
+        <EntityType Name="AGENCYWIDGET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONFIGURATIONKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETID" Type="nvarchar" MaxLength="50" />
+          <Property Name="AGENCYNAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CONFIGURATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONFIGURATIONKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="AGENCY" Type="nvarchar" MaxLength="50" />
+          <Property Name="HTTPPROXY" Type="nvarchar" MaxLength="300" />
+          <Property Name="ITEMID" Type="nvarchar" MaxLength="50" />
+          <Property Name="URL" Type="nvarchar" MaxLength="300" />
+          <Property Name="CLIENID" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAPSERVICENAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="INTERGRATIONNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAPSERVICETHUMBNAIL" Type="text" />
+          <Property Name="AAGISSERVICEID" Type="nvarchar" MaxLength="50" />
+          <Property Name="APPSERVERURL" Type="nvarchar" MaxLength="300" />
+          <Property Name="AAUSERNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="AAPASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="ISDEFAULT" Type="nvarchar" MaxLength="50" />
+          <Property Name="SERVICEAREADRIVETIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONLEFT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONTOP" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONRIGHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONBOTTOM" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONWIDTH" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONHEIGHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONMARGINRIGHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="THEMENAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="THEMESTYLES" Type="nvarchar" MaxLength="100" />
+          <Property Name="PRODUCT" Type="nvarchar" MaxLength="50" />
+          <Property Name="ENABLEPERSISTMAPSTATUS" Type="int" />
+          <Property Name="AAMAPPINGMAPPROFILEKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="AAMAPPINGSERVICEKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="AAMAPPINGLAYERKEY" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONCOMMAND">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONFIGURATIONKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="EVENTTYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMANDTITLE" Type="nvarchar" MaxLength="100" />
+          <Property Name="COMMANDACTION" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMANDENABLE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONDYNAMICTHEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONFIGURATIONKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="DYNAMICTHEMEID" Type="nvarchar" MaxLength="255" />
+          <Property Name="STROKERCOLOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="STROKERTHICKNESS" Type="int" />
+          <Property Name="FILLCOLOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="INDEXNUM" Type="int" />
+          <Property Name="VISIBILITY" Type="int" />
+          <Property Name="DYNAMICTHEMENAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="DYNAMICTHEMEGROUPNAME" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONLAYER">
+          <Key>
+            <PropertyRef Name="LAYERID" />
+          </Key>
+          <Property Name="LAYERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LAYERKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAYERCODE" Type="nvarchar" MaxLength="150" />
+          <Property Name="LAYERNAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="LAYERICON" Type="text" />
+          <Property Name="SERVICEKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="PARENTLAYERCODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SRS" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAYERTYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="LEGENDDATA" Type="text" />
+          <Property Name="LEGENDTYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="GID" Type="nvarchar" MaxLength="500" />
+          <Property Name="URL" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONLAYERFIELD">
+          <Key>
+            <PropertyRef Name="FIELDID" />
+          </Key>
+          <Property Name="FIELDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LAYERID" Type="int" />
+          <Property Name="LAYERKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELDCODE" Type="nvarchar" MaxLength="150" />
+          <Property Name="FIELDNAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="FIELDIDFIELD" Type="nvarchar" MaxLength="150" />
+          <Property Name="FIELDTYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ALIAS" Type="nvarchar" MaxLength="150" />
+          <Property Name="SQLTYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="NULLABLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="EDITABLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOMAINNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOMAINTYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEFAULTVALUE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONWIDGET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONFIGURATIONKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETID" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETLABEL" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETURI" Type="nvarchar" MaxLength="300" />
+          <Property Name="WIDGETCUSTOMIZE" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONLEFT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONTOP" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONRIGHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONBOTTOM" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONWIDTH" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONHEIGHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONMARGINRIGHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONFIXED" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONOFFSET" Type="nvarchar" MaxLength="50" />
+          <Property Name="PANELURI" Type="nvarchar" MaxLength="300" />
+          <Property Name="CONFIG" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="DYNAMICTHEMEPARAMETER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DT_CONFIGURATION_ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PARAMETER_VALUE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DISPLAY_ORDER" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMAILSETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FROMACCOUNT" Type="nvarchar" MaxLength="150" />
+          <Property Name="SENDERACCOUNT" Type="nvarchar" MaxLength="150" />
+          <Property Name="SENDERPASSWORD" Type="nvarchar" MaxLength="150" />
+          <Property Name="SMTPPORT" Type="nvarchar" MaxLength="50" />
+          <Property Name="SMTPSERVER" Type="nvarchar" MaxLength="150" />
+          <Property Name="CREATEDTIME" Type="datetime" />
+          <Property Name="CREATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATEDTIME" Type="datetime" />
+          <Property Name="UPDATEDBY" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GLOBALSETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LOGLEVEL" Type="int" Nullable="false" />
+          <Property Name="LOGPERIOD" Type="int" Nullable="false" />
+          <Property Name="UPDATEDTIME" Type="datetime" />
+          <Property Name="UPDATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="DISABLESHA1" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LOGS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TRACEID" Type="nvarchar" MaxLength="100" />
+          <Property Name="LOGLEVEL" Type="nvarchar" MaxLength="20" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="AGENCY" Type="nvarchar" MaxLength="60" />
+          <Property Name="APP" Type="nvarchar" MaxLength="100" />
+          <Property Name="APPVER" Type="nvarchar" MaxLength="20" />
+          <Property Name="ENVNAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="MESSAGE" Type="nvarchar" MaxLength="250" />
+          <Property Name="DETAIL" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DETAILBLOBURI" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DETAILSIZE" Type="int" />
+          <Property Name="METHODNAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="METHODEXECUTETIME" Type="int" />
+          <Property Name="METHODINSIZE" Type="int" />
+          <Property Name="METHODOUTSIZE" Type="int" />
+          <Property Name="REQUESTFROM" Type="nvarchar" MaxLength="100" />
+          <Property Name="REQUESTTO" Type="nvarchar" MaxLength="100" />
+          <Property Name="REQUESTTOSERVER" Type="nvarchar" MaxLength="100" />
+          <Property Name="LOGSORDER" Type="int" />
+          <Property Name="PRODUCT" Type="nvarchar" MaxLength="100" />
+          <Property Name="SERVICEID" Type="nvarchar" MaxLength="100" />
+          <Property Name="INTEGRATIONNAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="DATECREATED" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MAPPROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROFILEKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROFILENAME" Type="nvarchar" MaxLength="250" />
+          <Property Name="AGENCY" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MAPPROFILESERVICE">
+          <Key>
+            <PropertyRef Name="SERVICEID" />
+          </Key>
+          <Property Name="SERVICEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROFILEKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="SERVICEKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="SERVICETYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAPSERVICEID" Type="nvarchar" MaxLength="100" />
+          <Property Name="MAPSERVICENAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="MAPSERVICEURL" Type="nvarchar" MaxLength="300" />
+          <Property Name="MAPSERVICETHUMBNAIL" Type="text" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="GISPROVIDER" Type="nvarchar" MaxLength="50" />
+          <Property Name="GISSERVER" Type="nvarchar" MaxLength="50" />
+          <Property Name="SERVERPORT" Type="nvarchar" MaxLength="50" />
+          <Property Name="GISINSTANCE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SERVERISSSL" Type="nvarchar" MaxLength="50" />
+          <Property Name="INITIALEXTENT" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FULLEXTENT" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ISDEFAULT" Type="nvarchar" MaxLength="50" />
+          <Property Name="SUPPORTSDYNAMICLAYERS" Type="nvarchar" MaxLength="50" />
+          <Property Name="SINGLEFUSEDMAPCACHE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SPATIALREFERENCE" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MINSCALE" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAXSCALE" Type="nvarchar" MaxLength="50" />
+          <Property Name="UNITS" Type="nvarchar" MaxLength="50" />
+          <Property Name="TILEINFO" Type="nvarchar" MaxLength="4000" />
+          <Property Name="WMSSERVER" Type="nvarchar" MaxLength="500" />
+          <Property Name="WFSSERVER" Type="nvarchar" MaxLength="500" />
+          <Property Name="SUPPORTEDEXTENSIONS" Type="nvarchar" MaxLength="300" />
+          <Property Name="ORDERNUMBER" Type="int" />
+        </EntityType>
+        <EntityType Name="UPGRADE_SCRIPTS">
+          <Key>
+            <PropertyRef Name="SCRIPT_SEQ" />
+            <PropertyRef Name="RELEASE_VERSION" />
+          </Key>
+          <Property Name="SCRIPT_SEQ" Type="int" Nullable="false" />
+          <Property Name="SCRIPT_NAME" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RELEASE_VERSION" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="SCRIPT_APPLIED" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="REC_DATE" Type="datetime" Nullable="false" />
+          <Property Name="REC_FUL_NAM" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="REC_STATUS" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="USERGROUP">
+          <Key>
+            <PropertyRef Name="USERGROUPID" />
+          </Key>
+          <Property Name="USERGROUPID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CONFIGURATIONKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAPPROFILEKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="USERGROUPNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="USERGROUPDESCRIPTION" Type="nvarchar" MaxLength="500" />
+          <Property Name="WIDGETLAYOUT" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDTIME" Type="datetime" />
+          <Property Name="UPDATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATEDTIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="USERGROUPCOMMAND">
+          <Key>
+            <PropertyRef Name="COMMANDID" />
+          </Key>
+          <Property Name="COMMANDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERGROUPKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMANDKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDTIME" Type="datetime" />
+          <Property Name="UPDATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATEDTIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="USERGROUPDETAIL">
+          <Key>
+            <PropertyRef Name="DETAILID" />
+          </Key>
+          <Property Name="DETAILID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERGROUPID" Type="nvarchar" MaxLength="50" />
+          <Property Name="AAGROUPID" Type="int" />
+          <Property Name="AAGROUPNAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="AAGROUPDESCRIPTION" Type="nvarchar" MaxLength="500" />
+          <Property Name="AAMODULENAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="AAMODULEKEY" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AASTATUSTITLE" Type="nvarchar" MaxLength="10" />
+          <Property Name="AASTATUSVALUE" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CREATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDTIME" Type="datetime" />
+          <Property Name="UPDATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATEDTIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="USERGROUPLAYERSETTING">
+          <Key>
+            <PropertyRef Name="SETTINGID" />
+          </Key>
+          <Property Name="SETTINGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERGROUPID" Type="nvarchar" MaxLength="50" />
+          <Property Name="SERVICEKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="ISAVAIABLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ISVISABLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ISEDITABLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="EDITABLEUSERS" Type="nvarchar" MaxLength="2000" />
+          <Property Name="USERGROUPDESCRIPTION" Type="nvarchar" MaxLength="300" />
+          <Property Name="LAYERCODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDTIME" Type="datetime" />
+          <Property Name="UPDATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATEDTIME" Type="datetime" />
+          <Property Name="DYNAMICTHEMEID" Type="int" />
+          <Property Name="DYNAMICTHEMEGROUP" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="USERGROUPWIDGET">
+          <Key>
+            <PropertyRef Name="WIDGETID" />
+          </Key>
+          <Property Name="WIDGETID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERGROUPKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATEDTIME" Type="datetime" />
+          <Property Name="UPDATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATEDTIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="USERPROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AGENCY" Type="nvarchar" MaxLength="50" />
+          <Property Name="ROLE" Type="int" Nullable="false" />
+          <Property Name="STATUS" Type="int" Nullable="false" />
+          <Property Name="CREATEDTIME" Type="datetime" />
+          <Property Name="CREATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATEDTIME" Type="datetime" />
+          <Property Name="UPDATEDBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIRSTNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="MIDDLENAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="LASTNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEPARTMENT" Type="nvarchar" MaxLength="50" />
+          <Property Name="MOBILEPHONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="OFFICEPHONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SECURITYQUESTION" Type="nvarchar" MaxLength="200" />
+          <Property Name="SECURITYANSWER" Type="nvarchar" MaxLength="200" />
+          <Property Name="SHAPASSWORD" Type="nvarchar" MaxLength="100" />
+          <Property Name="SALT" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WIDGET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONFIGURATIONKEY" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETID" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETLABEL" Type="nvarchar" MaxLength="50" />
+          <Property Name="WIDGETURI" Type="nvarchar" MaxLength="300" />
+          <Property Name="WIDGETCUSTOMIZE" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONLEFT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONTOP" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONRIGHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONBOTTOM" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONWIDTH" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONHEIGHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONMARGINRIGHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONFIXED" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSITIONOFFSET" Type="nvarchar" MaxLength="50" />
+          <Property Name="CONFIG" Type="nvarchar" MaxLength="300" />
+          <Property Name="PANELURI" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'AGIS.dbo.XAPOCONFIGURATION' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="XAPOCONFIGURATION">
+          <Property Name="AGENCY" Type="nvarchar" MaxLength="50" />
+          <Property Name="REFERENCEOBJECT" Type="nvarchar" MaxLength="50" />
+          <Property Name="GISLAYER" Type="nvarchar" MaxLength="255" />
+          <Property Name="OBJECTFIELD" Type="nvarchar" MaxLength="50" />
+          <Property Name="GISFIELD" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAPSERVICE" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAYERCODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELDTYPE" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityContainer Name="AGISModelStoreContainer">
+          <EntitySet Name="AGENCY" EntityType="Self.AGENCY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AGENCYSETTING" EntityType="Self.AGENCYSETTING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AGENCYWIDGET" EntityType="Self.AGENCYWIDGET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONFIGURATION" EntityType="Self.CONFIGURATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONFIGURATIONCOMMAND" EntityType="Self.CONFIGURATIONCOMMAND" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONFIGURATIONDYNAMICTHEME" EntityType="Self.CONFIGURATIONDYNAMICTHEME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONFIGURATIONLAYER" EntityType="Self.CONFIGURATIONLAYER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONFIGURATIONLAYERFIELD" EntityType="Self.CONFIGURATIONLAYERFIELD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONFIGURATIONWIDGET" EntityType="Self.CONFIGURATIONWIDGET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DYNAMICTHEMEPARAMETER" EntityType="Self.DYNAMICTHEMEPARAMETER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMAILSETTING" EntityType="Self.EMAILSETTING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GLOBALSETTING" EntityType="Self.GLOBALSETTING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGS" EntityType="Self.LOGS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MAPPROFILE" EntityType="Self.MAPPROFILE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MAPPROFILESERVICE" EntityType="Self.MAPPROFILESERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UPGRADE_SCRIPTS" EntityType="Self.UPGRADE_SCRIPTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERGROUP" EntityType="Self.USERGROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERGROUPCOMMAND" EntityType="Self.USERGROUPCOMMAND" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERGROUPDETAIL" EntityType="Self.USERGROUPDETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERGROUPLAYERSETTING" EntityType="Self.USERGROUPLAYERSETTING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERGROUPWIDGET" EntityType="Self.USERGROUPWIDGET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERPROFILE" EntityType="Self.USERPROFILE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WIDGET" EntityType="Self.WIDGET" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AGISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AGENCY">
+          <Key>
+            <PropertyRef Name="AGENCYID" />
+          </Key>
+          <Property Name="AGENCYID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AGENCYNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Int32" />
+          <Property Name="CREATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AGENCYSETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AGENCY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FEATURECOUNTLIMIT" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AGENCYWIDGET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONFIGURATIONKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AGENCYNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CONFIGURATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONFIGURATIONKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AGENCY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HTTPPROXY" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ITEMID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAPSERVICENAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="INTERGRATIONNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAPSERVICETHUMBNAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AAGISSERVICEID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="APPSERVERURL" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AAUSERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AAPASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISDEFAULT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SERVICEAREADRIVETIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONLEFT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONTOP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONRIGHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONBOTTOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONWIDTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONHEIGHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONMARGINRIGHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="THEMENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="THEMESTYLES" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PRODUCT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENABLEPERSISTMAPSTATUS" Type="Int32" />
+          <Property Name="AAMAPPINGMAPPROFILEKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AAMAPPINGSERVICEKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AAMAPPINGLAYERKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONCOMMAND">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONFIGURATIONKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EVENTTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMANDTITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="COMMANDACTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMANDENABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONDYNAMICTHEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONFIGURATIONKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DYNAMICTHEMEID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="STROKERCOLOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STROKERTHICKNESS" Type="Int32" />
+          <Property Name="FILLCOLOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="INDEXNUM" Type="Int32" />
+          <Property Name="VISIBILITY" Type="Int32" />
+          <Property Name="DYNAMICTHEMENAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DYNAMICTHEMEGROUPNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONLAYER">
+          <Key>
+            <PropertyRef Name="LAYERID" />
+          </Key>
+          <Property Name="LAYERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LAYERKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LAYERCODE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LAYERNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LAYERICON" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SERVICEKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PARENTLAYERCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SRS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LAYERTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LEGENDDATA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LEGENDTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONLAYERFIELD">
+          <Key>
+            <PropertyRef Name="FIELDID" />
+          </Key>
+          <Property Name="FIELDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LAYERID" Type="Int32" />
+          <Property Name="LAYERKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIELDCODE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FIELDNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FIELDIDFIELD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FIELDTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ALIAS" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SQLTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NULLABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EDITABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOMAINNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOMAINTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DEFAULTVALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CONFIGURATIONWIDGET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONFIGURATIONKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETLABEL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETURI" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETCUSTOMIZE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONLEFT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONTOP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONRIGHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONBOTTOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONWIDTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONHEIGHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONMARGINRIGHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONFIXED" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONOFFSET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PANELURI" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CONFIG" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DYNAMICTHEMEPARAMETER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DT_CONFIGURATION_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PARAMETER_VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DISPLAY_ORDER" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMAILSETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FROMACCOUNT" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SENDERACCOUNT" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SENDERPASSWORD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SMTPPORT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SMTPSERVER" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GLOBALSETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LOGLEVEL" Type="Int32" Nullable="false" />
+          <Property Name="LOGPERIOD" Type="Int32" Nullable="false" />
+          <Property Name="UPDATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DISABLESHA1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TRACEID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LOGLEVEL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AGENCY" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="APP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="APPVER" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ENVNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MESSAGE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DETAIL" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DETAILBLOBURI" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DETAILSIZE" Type="Int32" />
+          <Property Name="METHODNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="METHODEXECUTETIME" Type="Int32" />
+          <Property Name="METHODINSIZE" Type="Int32" />
+          <Property Name="METHODOUTSIZE" Type="Int32" />
+          <Property Name="REQUESTFROM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="REQUESTTO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="REQUESTTOSERVER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LOGSORDER" Type="Int32" />
+          <Property Name="PRODUCT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SERVICEID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="INTEGRATIONNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DATECREATED" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="MAPPROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROFILEKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROFILENAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AGENCY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MAPPROFILESERVICE">
+          <Key>
+            <PropertyRef Name="SERVICEID" />
+          </Key>
+          <Property Name="SERVICEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROFILEKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SERVICEKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SERVICETYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAPSERVICEID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MAPSERVICENAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MAPSERVICEURL" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MAPSERVICETHUMBNAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GISPROVIDER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GISSERVER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SERVERPORT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GISINSTANCE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SERVERISSSL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="INITIALEXTENT" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="FULLEXTENT" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ISDEFAULT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SUPPORTSDYNAMICLAYERS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SINGLEFUSEDMAPCACHE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SPATIALREFERENCE" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MINSCALE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAXSCALE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UNITS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TILEINFO" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="WMSSERVER" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WFSSERVER" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SUPPORTEDEXTENSIONS" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ORDERNUMBER" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UPGRADE_SCRIPTS">
+          <Key>
+            <PropertyRef Name="SCRIPT_SEQ" />
+            <PropertyRef Name="RELEASE_VERSION" />
+          </Key>
+          <Property Name="SCRIPT_SEQ" Type="Int32" Nullable="false" />
+          <Property Name="SCRIPT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RELEASE_VERSION" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SCRIPT_APPLIED" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REC_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="REC_FUL_NAM" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REC_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USERGROUP">
+          <Key>
+            <PropertyRef Name="USERGROUPID" />
+          </Key>
+          <Property Name="USERGROUPID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CONFIGURATIONKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAPPROFILEKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USERGROUPNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USERGROUPDESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETLAYOUT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATEDTIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="USERGROUPCOMMAND">
+          <Key>
+            <PropertyRef Name="COMMANDID" />
+          </Key>
+          <Property Name="COMMANDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERGROUPKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMANDKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATEDTIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="USERGROUPDETAIL">
+          <Key>
+            <PropertyRef Name="DETAILID" />
+          </Key>
+          <Property Name="DETAILID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERGROUPID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AAGROUPID" Type="Int32" />
+          <Property Name="AAGROUPNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AAGROUPDESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AAMODULENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AAMODULEKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AASTATUSTITLE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AASTATUSVALUE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATEDTIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="USERGROUPLAYERSETTING">
+          <Key>
+            <PropertyRef Name="SETTINGID" />
+          </Key>
+          <Property Name="SETTINGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERGROUPID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SERVICEKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISAVAIABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISVISABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISEDITABLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EDITABLEUSERS" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="USERGROUPDESCRIPTION" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="LAYERCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="DYNAMICTHEMEID" Type="Int32" />
+          <Property Name="DYNAMICTHEMEGROUP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="USERGROUPWIDGET">
+          <Key>
+            <PropertyRef Name="WIDGETID" />
+          </Key>
+          <Property Name="WIDGETID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERGROUPKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATEDTIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="USERPROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENCY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ROLE" Type="Int32" Nullable="false" />
+          <Property Name="STATUS" Type="Int32" Nullable="false" />
+          <Property Name="CREATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATEDTIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MIDDLENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DEPARTMENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MOBILEPHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OFFICEPHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SECURITYQUESTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SECURITYANSWER" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SHAPASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SALT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WIDGET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONFIGURATIONKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETLABEL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETURI" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="WIDGETCUSTOMIZE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONLEFT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONTOP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONRIGHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONBOTTOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONWIDTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONHEIGHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONMARGINRIGHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONFIXED" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POSITIONOFFSET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CONFIG" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PANELURI" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="AGISEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGENCies" EntityType="Self.AGENCY" />
+          <EntitySet Name="AGENCYSETTINGs" EntityType="Self.AGENCYSETTING" />
+          <EntitySet Name="AGENCYWIDGETs" EntityType="Self.AGENCYWIDGET" />
+          <EntitySet Name="CONFIGURATIONs" EntityType="Self.CONFIGURATION" />
+          <EntitySet Name="CONFIGURATIONCOMMANDs" EntityType="Self.CONFIGURATIONCOMMAND" />
+          <EntitySet Name="CONFIGURATIONDYNAMICTHEMEs" EntityType="Self.CONFIGURATIONDYNAMICTHEME" />
+          <EntitySet Name="CONFIGURATIONLAYERs" EntityType="Self.CONFIGURATIONLAYER" />
+          <EntitySet Name="CONFIGURATIONLAYERFIELDs" EntityType="Self.CONFIGURATIONLAYERFIELD" />
+          <EntitySet Name="CONFIGURATIONWIDGETs" EntityType="Self.CONFIGURATIONWIDGET" />
+          <EntitySet Name="DYNAMICTHEMEPARAMETERs" EntityType="Self.DYNAMICTHEMEPARAMETER" />
+          <EntitySet Name="EMAILSETTINGs" EntityType="Self.EMAILSETTING" />
+          <EntitySet Name="GLOBALSETTINGs" EntityType="Self.GLOBALSETTING" />
+          <EntitySet Name="LOGS" EntityType="Self.LOG" />
+          <EntitySet Name="MAPPROFILEs" EntityType="Self.MAPPROFILE" />
+          <EntitySet Name="MAPPROFILESERVICEs" EntityType="Self.MAPPROFILESERVICE" />
+          <EntitySet Name="UPGRADE_SCRIPTS" EntityType="Self.UPGRADE_SCRIPTS" />
+          <EntitySet Name="USERGROUPs" EntityType="Self.USERGROUP" />
+          <EntitySet Name="USERGROUPCOMMANDs" EntityType="Self.USERGROUPCOMMAND" />
+          <EntitySet Name="USERGROUPDETAILs" EntityType="Self.USERGROUPDETAIL" />
+          <EntitySet Name="USERGROUPLAYERSETTINGs" EntityType="Self.USERGROUPLAYERSETTING" />
+          <EntitySet Name="USERGROUPWIDGETs" EntityType="Self.USERGROUPWIDGET" />
+          <EntitySet Name="USERPROFILEs" EntityType="Self.USERPROFILE" />
+          <EntitySet Name="WIDGETs" EntityType="Self.WIDGET" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AGISModelStoreContainer" CdmEntityContainer="AGISEntities">
+          <EntitySetMapping Name="AGENCies">
+            <EntityTypeMapping TypeName="AGISModel.AGENCY">
+              <MappingFragment StoreEntitySet="AGENCY">
+                <ScalarProperty Name="AGENCYID" ColumnName="AGENCYID" />
+                <ScalarProperty Name="AGENCYNAME" ColumnName="AGENCYNAME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="CREATEDTIME" ColumnName="CREATEDTIME" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="UPDATEDTIME" ColumnName="UPDATEDTIME" />
+                <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGENCYSETTINGs">
+            <EntityTypeMapping TypeName="AGISModel.AGENCYSETTING">
+              <MappingFragment StoreEntitySet="AGENCYSETTING">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AGENCY" ColumnName="AGENCY" />
+                <ScalarProperty Name="FEATURECOUNTLIMIT" ColumnName="FEATURECOUNTLIMIT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGENCYWIDGETs">
+            <EntityTypeMapping TypeName="AGISModel.AGENCYWIDGET">
+              <MappingFragment StoreEntitySet="AGENCYWIDGET">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONFIGURATIONKEY" ColumnName="CONFIGURATIONKEY" />
+                <ScalarProperty Name="WIDGETID" ColumnName="WIDGETID" />
+                <ScalarProperty Name="AGENCYNAME" ColumnName="AGENCYNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIGURATIONs">
+            <EntityTypeMapping TypeName="AGISModel.CONFIGURATION">
+              <MappingFragment StoreEntitySet="CONFIGURATION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONFIGURATIONKEY" ColumnName="CONFIGURATIONKEY" />
+                <ScalarProperty Name="AGENCY" ColumnName="AGENCY" />
+                <ScalarProperty Name="HTTPPROXY" ColumnName="HTTPPROXY" />
+                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="CLIENID" ColumnName="CLIENID" />
+                <ScalarProperty Name="MAPSERVICENAME" ColumnName="MAPSERVICENAME" />
+                <ScalarProperty Name="INTERGRATIONNAME" ColumnName="INTERGRATIONNAME" />
+                <ScalarProperty Name="MAPSERVICETHUMBNAIL" ColumnName="MAPSERVICETHUMBNAIL" />
+                <ScalarProperty Name="AAGISSERVICEID" ColumnName="AAGISSERVICEID" />
+                <ScalarProperty Name="APPSERVERURL" ColumnName="APPSERVERURL" />
+                <ScalarProperty Name="AAUSERNAME" ColumnName="AAUSERNAME" />
+                <ScalarProperty Name="AAPASSWORD" ColumnName="AAPASSWORD" />
+                <ScalarProperty Name="ISDEFAULT" ColumnName="ISDEFAULT" />
+                <ScalarProperty Name="SERVICEAREADRIVETIME" ColumnName="SERVICEAREADRIVETIME" />
+                <ScalarProperty Name="POSITIONLEFT" ColumnName="POSITIONLEFT" />
+                <ScalarProperty Name="POSITIONTOP" ColumnName="POSITIONTOP" />
+                <ScalarProperty Name="POSITIONRIGHT" ColumnName="POSITIONRIGHT" />
+                <ScalarProperty Name="POSITIONBOTTOM" ColumnName="POSITIONBOTTOM" />
+                <ScalarProperty Name="POSITIONWIDTH" ColumnName="POSITIONWIDTH" />
+                <ScalarProperty Name="POSITIONHEIGHT" ColumnName="POSITIONHEIGHT" />
+                <ScalarProperty Name="POSITIONMARGINRIGHT" ColumnName="POSITIONMARGINRIGHT" />
+                <ScalarProperty Name="THEMENAME" ColumnName="THEMENAME" />
+                <ScalarProperty Name="THEMESTYLES" ColumnName="THEMESTYLES" />
+                <ScalarProperty Name="PRODUCT" ColumnName="PRODUCT" />
+                <ScalarProperty Name="ENABLEPERSISTMAPSTATUS" ColumnName="ENABLEPERSISTMAPSTATUS" />
+                <ScalarProperty Name="AAMAPPINGMAPPROFILEKEY" ColumnName="AAMAPPINGMAPPROFILEKEY" />
+                <ScalarProperty Name="AAMAPPINGSERVICEKEY" ColumnName="AAMAPPINGSERVICEKEY" />
+                <ScalarProperty Name="AAMAPPINGLAYERKEY" ColumnName="AAMAPPINGLAYERKEY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIGURATIONCOMMANDs">
+            <EntityTypeMapping TypeName="AGISModel.CONFIGURATIONCOMMAND">
+              <MappingFragment StoreEntitySet="CONFIGURATIONCOMMAND">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONFIGURATIONKEY" ColumnName="CONFIGURATIONKEY" />
+                <ScalarProperty Name="EVENTTYPE" ColumnName="EVENTTYPE" />
+                <ScalarProperty Name="COMMANDTITLE" ColumnName="COMMANDTITLE" />
+                <ScalarProperty Name="COMMANDACTION" ColumnName="COMMANDACTION" />
+                <ScalarProperty Name="COMMANDENABLE" ColumnName="COMMANDENABLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIGURATIONDYNAMICTHEMEs">
+            <EntityTypeMapping TypeName="AGISModel.CONFIGURATIONDYNAMICTHEME">
+              <MappingFragment StoreEntitySet="CONFIGURATIONDYNAMICTHEME">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONFIGURATIONKEY" ColumnName="CONFIGURATIONKEY" />
+                <ScalarProperty Name="DYNAMICTHEMEID" ColumnName="DYNAMICTHEMEID" />
+                <ScalarProperty Name="STROKERCOLOR" ColumnName="STROKERCOLOR" />
+                <ScalarProperty Name="STROKERTHICKNESS" ColumnName="STROKERTHICKNESS" />
+                <ScalarProperty Name="FILLCOLOR" ColumnName="FILLCOLOR" />
+                <ScalarProperty Name="INDEXNUM" ColumnName="INDEXNUM" />
+                <ScalarProperty Name="VISIBILITY" ColumnName="VISIBILITY" />
+                <ScalarProperty Name="DYNAMICTHEMENAME" ColumnName="DYNAMICTHEMENAME" />
+                <ScalarProperty Name="DYNAMICTHEMEGROUPNAME" ColumnName="DYNAMICTHEMEGROUPNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIGURATIONLAYERs">
+            <EntityTypeMapping TypeName="AGISModel.CONFIGURATIONLAYER">
+              <MappingFragment StoreEntitySet="CONFIGURATIONLAYER">
+                <ScalarProperty Name="LAYERID" ColumnName="LAYERID" />
+                <ScalarProperty Name="LAYERKEY" ColumnName="LAYERKEY" />
+                <ScalarProperty Name="LAYERCODE" ColumnName="LAYERCODE" />
+                <ScalarProperty Name="LAYERNAME" ColumnName="LAYERNAME" />
+                <ScalarProperty Name="LAYERICON" ColumnName="LAYERICON" />
+                <ScalarProperty Name="SERVICEKEY" ColumnName="SERVICEKEY" />
+                <ScalarProperty Name="PARENTLAYERCODE" ColumnName="PARENTLAYERCODE" />
+                <ScalarProperty Name="SRS" ColumnName="SRS" />
+                <ScalarProperty Name="LAYERTYPE" ColumnName="LAYERTYPE" />
+                <ScalarProperty Name="LEGENDDATA" ColumnName="LEGENDDATA" />
+                <ScalarProperty Name="LEGENDTYPE" ColumnName="LEGENDTYPE" />
+                <ScalarProperty Name="GID" ColumnName="GID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIGURATIONLAYERFIELDs">
+            <EntityTypeMapping TypeName="AGISModel.CONFIGURATIONLAYERFIELD">
+              <MappingFragment StoreEntitySet="CONFIGURATIONLAYERFIELD">
+                <ScalarProperty Name="FIELDID" ColumnName="FIELDID" />
+                <ScalarProperty Name="LAYERID" ColumnName="LAYERID" />
+                <ScalarProperty Name="LAYERKEY" ColumnName="LAYERKEY" />
+                <ScalarProperty Name="FIELDCODE" ColumnName="FIELDCODE" />
+                <ScalarProperty Name="FIELDNAME" ColumnName="FIELDNAME" />
+                <ScalarProperty Name="FIELDIDFIELD" ColumnName="FIELDIDFIELD" />
+                <ScalarProperty Name="FIELDTYPE" ColumnName="FIELDTYPE" />
+                <ScalarProperty Name="ALIAS" ColumnName="ALIAS" />
+                <ScalarProperty Name="SQLTYPE" ColumnName="SQLTYPE" />
+                <ScalarProperty Name="NULLABLE" ColumnName="NULLABLE" />
+                <ScalarProperty Name="EDITABLE" ColumnName="EDITABLE" />
+                <ScalarProperty Name="DOMAINNAME" ColumnName="DOMAINNAME" />
+                <ScalarProperty Name="DOMAINTYPE" ColumnName="DOMAINTYPE" />
+                <ScalarProperty Name="DEFAULTVALUE" ColumnName="DEFAULTVALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIGURATIONWIDGETs">
+            <EntityTypeMapping TypeName="AGISModel.CONFIGURATIONWIDGET">
+              <MappingFragment StoreEntitySet="CONFIGURATIONWIDGET">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONFIGURATIONKEY" ColumnName="CONFIGURATIONKEY" />
+                <ScalarProperty Name="WIDGETID" ColumnName="WIDGETID" />
+                <ScalarProperty Name="WIDGETNAME" ColumnName="WIDGETNAME" />
+                <ScalarProperty Name="WIDGETLABEL" ColumnName="WIDGETLABEL" />
+                <ScalarProperty Name="WIDGETURI" ColumnName="WIDGETURI" />
+                <ScalarProperty Name="WIDGETCUSTOMIZE" ColumnName="WIDGETCUSTOMIZE" />
+                <ScalarProperty Name="POSITIONLEFT" ColumnName="POSITIONLEFT" />
+                <ScalarProperty Name="POSITIONTOP" ColumnName="POSITIONTOP" />
+                <ScalarProperty Name="POSITIONRIGHT" ColumnName="POSITIONRIGHT" />
+                <ScalarProperty Name="POSITIONBOTTOM" ColumnName="POSITIONBOTTOM" />
+                <ScalarProperty Name="POSITIONWIDTH" ColumnName="POSITIONWIDTH" />
+                <ScalarProperty Name="POSITIONHEIGHT" ColumnName="POSITIONHEIGHT" />
+                <ScalarProperty Name="POSITIONMARGINRIGHT" ColumnName="POSITIONMARGINRIGHT" />
+                <ScalarProperty Name="POSITIONFIXED" ColumnName="POSITIONFIXED" />
+                <ScalarProperty Name="POSITIONOFFSET" ColumnName="POSITIONOFFSET" />
+                <ScalarProperty Name="PANELURI" ColumnName="PANELURI" />
+                <ScalarProperty Name="CONFIG" ColumnName="CONFIG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DYNAMICTHEMEPARAMETERs">
+            <EntityTypeMapping TypeName="AGISModel.DYNAMICTHEMEPARAMETER">
+              <MappingFragment StoreEntitySet="DYNAMICTHEMEPARAMETER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DT_CONFIGURATION_ID" ColumnName="DT_CONFIGURATION_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PARAMETER_VALUE" ColumnName="PARAMETER_VALUE" />
+                <ScalarProperty Name="DISPLAY_ORDER" ColumnName="DISPLAY_ORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMAILSETTINGs">
+            <EntityTypeMapping TypeName="AGISModel.EMAILSETTING">
+              <MappingFragment StoreEntitySet="EMAILSETTING">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FROMACCOUNT" ColumnName="FROMACCOUNT" />
+                <ScalarProperty Name="SENDERACCOUNT" ColumnName="SENDERACCOUNT" />
+                <ScalarProperty Name="SENDERPASSWORD" ColumnName="SENDERPASSWORD" />
+                <ScalarProperty Name="SMTPPORT" ColumnName="SMTPPORT" />
+                <ScalarProperty Name="SMTPSERVER" ColumnName="SMTPSERVER" />
+                <ScalarProperty Name="CREATEDTIME" ColumnName="CREATEDTIME" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="UPDATEDTIME" ColumnName="UPDATEDTIME" />
+                <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GLOBALSETTINGs">
+            <EntityTypeMapping TypeName="AGISModel.GLOBALSETTING">
+              <MappingFragment StoreEntitySet="GLOBALSETTING">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LOGLEVEL" ColumnName="LOGLEVEL" />
+                <ScalarProperty Name="LOGPERIOD" ColumnName="LOGPERIOD" />
+                <ScalarProperty Name="UPDATEDTIME" ColumnName="UPDATEDTIME" />
+                <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+                <ScalarProperty Name="DISABLESHA1" ColumnName="DISABLESHA1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGS">
+            <EntityTypeMapping TypeName="AGISModel.LOG">
+              <MappingFragment StoreEntitySet="LOGS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TRACEID" ColumnName="TRACEID" />
+                <ScalarProperty Name="LOGLEVEL" ColumnName="LOGLEVEL" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="AGENCY" ColumnName="AGENCY" />
+                <ScalarProperty Name="APP" ColumnName="APP" />
+                <ScalarProperty Name="APPVER" ColumnName="APPVER" />
+                <ScalarProperty Name="ENVNAME" ColumnName="ENVNAME" />
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+                <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+                <ScalarProperty Name="DETAILBLOBURI" ColumnName="DETAILBLOBURI" />
+                <ScalarProperty Name="DETAILSIZE" ColumnName="DETAILSIZE" />
+                <ScalarProperty Name="METHODNAME" ColumnName="METHODNAME" />
+                <ScalarProperty Name="METHODEXECUTETIME" ColumnName="METHODEXECUTETIME" />
+                <ScalarProperty Name="METHODINSIZE" ColumnName="METHODINSIZE" />
+                <ScalarProperty Name="METHODOUTSIZE" ColumnName="METHODOUTSIZE" />
+                <ScalarProperty Name="REQUESTFROM" ColumnName="REQUESTFROM" />
+                <ScalarProperty Name="REQUESTTO" ColumnName="REQUESTTO" />
+                <ScalarProperty Name="REQUESTTOSERVER" ColumnName="REQUESTTOSERVER" />
+                <ScalarProperty Name="LOGSORDER" ColumnName="LOGSORDER" />
+                <ScalarProperty Name="PRODUCT" ColumnName="PRODUCT" />
+                <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
+                <ScalarProperty Name="INTEGRATIONNAME" ColumnName="INTEGRATIONNAME" />
+                <ScalarProperty Name="DATECREATED" ColumnName="DATECREATED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAPPROFILEs">
+            <EntityTypeMapping TypeName="AGISModel.MAPPROFILE">
+              <MappingFragment StoreEntitySet="MAPPROFILE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PROFILEKEY" ColumnName="PROFILEKEY" />
+                <ScalarProperty Name="PROFILENAME" ColumnName="PROFILENAME" />
+                <ScalarProperty Name="AGENCY" ColumnName="AGENCY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAPPROFILESERVICEs">
+            <EntityTypeMapping TypeName="AGISModel.MAPPROFILESERVICE">
+              <MappingFragment StoreEntitySet="MAPPROFILESERVICE">
+                <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
+                <ScalarProperty Name="PROFILEKEY" ColumnName="PROFILEKEY" />
+                <ScalarProperty Name="SERVICEKEY" ColumnName="SERVICEKEY" />
+                <ScalarProperty Name="SERVICETYPE" ColumnName="SERVICETYPE" />
+                <ScalarProperty Name="MAPSERVICEID" ColumnName="MAPSERVICEID" />
+                <ScalarProperty Name="MAPSERVICENAME" ColumnName="MAPSERVICENAME" />
+                <ScalarProperty Name="MAPSERVICEURL" ColumnName="MAPSERVICEURL" />
+                <ScalarProperty Name="MAPSERVICETHUMBNAIL" ColumnName="MAPSERVICETHUMBNAIL" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="GISPROVIDER" ColumnName="GISPROVIDER" />
+                <ScalarProperty Name="GISSERVER" ColumnName="GISSERVER" />
+                <ScalarProperty Name="SERVERPORT" ColumnName="SERVERPORT" />
+                <ScalarProperty Name="GISINSTANCE" ColumnName="GISINSTANCE" />
+                <ScalarProperty Name="SERVERISSSL" ColumnName="SERVERISSSL" />
+                <ScalarProperty Name="INITIALEXTENT" ColumnName="INITIALEXTENT" />
+                <ScalarProperty Name="FULLEXTENT" ColumnName="FULLEXTENT" />
+                <ScalarProperty Name="ISDEFAULT" ColumnName="ISDEFAULT" />
+                <ScalarProperty Name="SUPPORTSDYNAMICLAYERS" ColumnName="SUPPORTSDYNAMICLAYERS" />
+                <ScalarProperty Name="SINGLEFUSEDMAPCACHE" ColumnName="SINGLEFUSEDMAPCACHE" />
+                <ScalarProperty Name="SPATIALREFERENCE" ColumnName="SPATIALREFERENCE" />
+                <ScalarProperty Name="MINSCALE" ColumnName="MINSCALE" />
+                <ScalarProperty Name="MAXSCALE" ColumnName="MAXSCALE" />
+                <ScalarProperty Name="UNITS" ColumnName="UNITS" />
+                <ScalarProperty Name="TILEINFO" ColumnName="TILEINFO" />
+                <ScalarProperty Name="WMSSERVER" ColumnName="WMSSERVER" />
+                <ScalarProperty Name="WFSSERVER" ColumnName="WFSSERVER" />
+                <ScalarProperty Name="SUPPORTEDEXTENSIONS" ColumnName="SUPPORTEDEXTENSIONS" />
+                <ScalarProperty Name="ORDERNUMBER" ColumnName="ORDERNUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UPGRADE_SCRIPTS">
+            <EntityTypeMapping TypeName="AGISModel.UPGRADE_SCRIPTS">
+              <MappingFragment StoreEntitySet="UPGRADE_SCRIPTS">
+                <ScalarProperty Name="SCRIPT_SEQ" ColumnName="SCRIPT_SEQ" />
+                <ScalarProperty Name="SCRIPT_NAME" ColumnName="SCRIPT_NAME" />
+                <ScalarProperty Name="RELEASE_VERSION" ColumnName="RELEASE_VERSION" />
+                <ScalarProperty Name="SCRIPT_APPLIED" ColumnName="SCRIPT_APPLIED" />
+                <ScalarProperty Name="REC_DATE" ColumnName="REC_DATE" />
+                <ScalarProperty Name="REC_FUL_NAM" ColumnName="REC_FUL_NAM" />
+                <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERGROUPs">
+            <EntityTypeMapping TypeName="AGISModel.USERGROUP">
+              <MappingFragment StoreEntitySet="USERGROUP">
+                <ScalarProperty Name="USERGROUPID" ColumnName="USERGROUPID" />
+                <ScalarProperty Name="CONFIGURATIONKEY" ColumnName="CONFIGURATIONKEY" />
+                <ScalarProperty Name="MAPPROFILEKEY" ColumnName="MAPPROFILEKEY" />
+                <ScalarProperty Name="USERGROUPNAME" ColumnName="USERGROUPNAME" />
+                <ScalarProperty Name="USERGROUPDESCRIPTION" ColumnName="USERGROUPDESCRIPTION" />
+                <ScalarProperty Name="WIDGETLAYOUT" ColumnName="WIDGETLAYOUT" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="CREATEDTIME" ColumnName="CREATEDTIME" />
+                <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+                <ScalarProperty Name="UPDATEDTIME" ColumnName="UPDATEDTIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERGROUPCOMMANDs">
+            <EntityTypeMapping TypeName="AGISModel.USERGROUPCOMMAND">
+              <MappingFragment StoreEntitySet="USERGROUPCOMMAND">
+                <ScalarProperty Name="COMMANDID" ColumnName="COMMANDID" />
+                <ScalarProperty Name="USERGROUPKEY" ColumnName="USERGROUPKEY" />
+                <ScalarProperty Name="COMMANDKEY" ColumnName="COMMANDKEY" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="CREATEDTIME" ColumnName="CREATEDTIME" />
+                <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+                <ScalarProperty Name="UPDATEDTIME" ColumnName="UPDATEDTIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERGROUPDETAILs">
+            <EntityTypeMapping TypeName="AGISModel.USERGROUPDETAIL">
+              <MappingFragment StoreEntitySet="USERGROUPDETAIL">
+                <ScalarProperty Name="DETAILID" ColumnName="DETAILID" />
+                <ScalarProperty Name="USERGROUPID" ColumnName="USERGROUPID" />
+                <ScalarProperty Name="AAGROUPID" ColumnName="AAGROUPID" />
+                <ScalarProperty Name="AAGROUPNAME" ColumnName="AAGROUPNAME" />
+                <ScalarProperty Name="AAGROUPDESCRIPTION" ColumnName="AAGROUPDESCRIPTION" />
+                <ScalarProperty Name="AAMODULENAME" ColumnName="AAMODULENAME" />
+                <ScalarProperty Name="AAMODULEKEY" ColumnName="AAMODULEKEY" />
+                <ScalarProperty Name="AASTATUSTITLE" ColumnName="AASTATUSTITLE" />
+                <ScalarProperty Name="AASTATUSVALUE" ColumnName="AASTATUSVALUE" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="CREATEDTIME" ColumnName="CREATEDTIME" />
+                <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+                <ScalarProperty Name="UPDATEDTIME" ColumnName="UPDATEDTIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERGROUPLAYERSETTINGs">
+            <EntityTypeMapping TypeName="AGISModel.USERGROUPLAYERSETTING">
+              <MappingFragment StoreEntitySet="USERGROUPLAYERSETTING">
+                <ScalarProperty Name="SETTINGID" ColumnName="SETTINGID" />
+                <ScalarProperty Name="USERGROUPID" ColumnName="USERGROUPID" />
+                <ScalarProperty Name="SERVICEKEY" ColumnName="SERVICEKEY" />
+                <ScalarProperty Name="ISAVAIABLE" ColumnName="ISAVAIABLE" />
+                <ScalarProperty Name="ISVISABLE" ColumnName="ISVISABLE" />
+                <ScalarProperty Name="ISEDITABLE" ColumnName="ISEDITABLE" />
+                <ScalarProperty Name="EDITABLEUSERS" ColumnName="EDITABLEUSERS" />
+                <ScalarProperty Name="USERGROUPDESCRIPTION" ColumnName="USERGROUPDESCRIPTION" />
+                <ScalarProperty Name="LAYERCODE" ColumnName="LAYERCODE" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="CREATEDTIME" ColumnName="CREATEDTIME" />
+                <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+                <ScalarProperty Name="UPDATEDTIME" ColumnName="UPDATEDTIME" />
+                <ScalarProperty Name="DYNAMICTHEMEID" ColumnName="DYNAMICTHEMEID" />
+                <ScalarProperty Name="DYNAMICTHEMEGROUP" ColumnName="DYNAMICTHEMEGROUP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERGROUPWIDGETs">
+            <EntityTypeMapping TypeName="AGISModel.USERGROUPWIDGET">
+              <MappingFragment StoreEntitySet="USERGROUPWIDGET">
+                <ScalarProperty Name="WIDGETID" ColumnName="WIDGETID" />
+                <ScalarProperty Name="USERGROUPKEY" ColumnName="USERGROUPKEY" />
+                <ScalarProperty Name="WIDGETKEY" ColumnName="WIDGETKEY" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="CREATEDTIME" ColumnName="CREATEDTIME" />
+                <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+                <ScalarProperty Name="UPDATEDTIME" ColumnName="UPDATEDTIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERPROFILEs">
+            <EntityTypeMapping TypeName="AGISModel.USERPROFILE">
+              <MappingFragment StoreEntitySet="USERPROFILE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="AGENCY" ColumnName="AGENCY" />
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="CREATEDTIME" ColumnName="CREATEDTIME" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="UPDATEDTIME" ColumnName="UPDATEDTIME" />
+                <ScalarProperty Name="UPDATEDBY" ColumnName="UPDATEDBY" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="MIDDLENAME" ColumnName="MIDDLENAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+                <ScalarProperty Name="MOBILEPHONE" ColumnName="MOBILEPHONE" />
+                <ScalarProperty Name="OFFICEPHONE" ColumnName="OFFICEPHONE" />
+                <ScalarProperty Name="SECURITYQUESTION" ColumnName="SECURITYQUESTION" />
+                <ScalarProperty Name="SECURITYANSWER" ColumnName="SECURITYANSWER" />
+                <ScalarProperty Name="SHAPASSWORD" ColumnName="SHAPASSWORD" />
+                <ScalarProperty Name="SALT" ColumnName="SALT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WIDGETs">
+            <EntityTypeMapping TypeName="AGISModel.WIDGET">
+              <MappingFragment StoreEntitySet="WIDGET">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONFIGURATIONKEY" ColumnName="CONFIGURATIONKEY" />
+                <ScalarProperty Name="WIDGETID" ColumnName="WIDGETID" />
+                <ScalarProperty Name="WIDGETNAME" ColumnName="WIDGETNAME" />
+                <ScalarProperty Name="WIDGETLABEL" ColumnName="WIDGETLABEL" />
+                <ScalarProperty Name="WIDGETURI" ColumnName="WIDGETURI" />
+                <ScalarProperty Name="WIDGETCUSTOMIZE" ColumnName="WIDGETCUSTOMIZE" />
+                <ScalarProperty Name="POSITIONLEFT" ColumnName="POSITIONLEFT" />
+                <ScalarProperty Name="POSITIONTOP" ColumnName="POSITIONTOP" />
+                <ScalarProperty Name="POSITIONRIGHT" ColumnName="POSITIONRIGHT" />
+                <ScalarProperty Name="POSITIONBOTTOM" ColumnName="POSITIONBOTTOM" />
+                <ScalarProperty Name="POSITIONWIDTH" ColumnName="POSITIONWIDTH" />
+                <ScalarProperty Name="POSITIONHEIGHT" ColumnName="POSITIONHEIGHT" />
+                <ScalarProperty Name="POSITIONMARGINRIGHT" ColumnName="POSITIONMARGINRIGHT" />
+                <ScalarProperty Name="POSITIONFIXED" ColumnName="POSITIONFIXED" />
+                <ScalarProperty Name="POSITIONOFFSET" ColumnName="POSITIONOFFSET" />
+                <ScalarProperty Name="CONFIG" ColumnName="CONFIG" />
+                <ScalarProperty Name="PANELURI" ColumnName="PANELURI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

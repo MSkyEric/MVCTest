@@ -1,0 +1,94 @@
+﻿@model IEnumerable<MVCTest.AGENCY>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
+        $("#query1").on("click", function () {
+            //debugger;
+            $.ajax({
+                url: "http://localhost:14874/api/api",
+                type: "POST",
+                headers: { "content-type": "application/json;utf-8", "Accept": "application/json" },
+                data: "{'AGENCYID':2,'AGENCYNAME':'aqq','STATUS':null,'CREATEDTIME': '2017-07-31T00:00:00','CREATEDBY':'33','UPDATEDTIME':'2017-07-31T00:00:00','UPDATEDBY':'aeeea'}",
+                success: function (data) {
+                    alert(data);
+                }
+            })
+
+
+        });
+    });
+
+
+</script>
+<input id="query1" type="button" value="查询" />
+<p>这是一个段落。</p>
+@*<button>切换</button>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AGENCYID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AGENCYNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATEDTIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATEDBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPDATEDTIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPDATEDBY)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AGENCYID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AGENCYNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STATUS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CREATEDTIME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CREATEDBY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UPDATEDTIME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UPDATEDBY)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AGENCYID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AGENCYID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AGENCYID })
+            </td>
+        </tr>
+    }
+
+</table>
